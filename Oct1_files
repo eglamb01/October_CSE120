@@ -1,0 +1,10 @@
+#Read files
+f = open("demofile.txt","r")
+    print(f.read()) #Read whole file
+    print(f.readline()) #read single line at a time, can use in loop to repeatedly go down the file.
+    print(f.readlines())#Read each line as different items in a list
+    f.close()
+#Append files
+f = open("demofile.txt","a")
+    f.write("Now the file has more content!") #Will add to file (without deleting because of the "a") but not print
+    f.close()
