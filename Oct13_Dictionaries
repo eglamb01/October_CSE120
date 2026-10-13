@@ -6,3 +6,6 @@ if __name__ == '__main__':
     print(y)
     z = thisdict.keys()
     print(z)
+    #How to modify dict
+    thisdict["Year"] = 2018
+    print(thisdict)
