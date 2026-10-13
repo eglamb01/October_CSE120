@@ -1,0 +1,8 @@
+if __name__ == '__main__':
+    thisdict = dict(brand = "Ford", Model = "Mustang", Year = 1964)
+    x = thisdict ["Model"]
+    print(x)
+    y = thisdict.values()
+    print(y)
+    z = thisdict.keys()
+    print(z)
