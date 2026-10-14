@@ -1,0 +1,88 @@
+def menu():
+    print("- Phone Book Menu -")
+    print("1. = Add Contact")
+    print("2. = Display All Contacts")
+    print("3. = Search Contact")
+    print("4. = Remove a Contact")
+def ask():
+    while True:
+        Q = input("Do you want to do another operation? (yes/no): ").lower()
+        if Q == "yes":
+            break
+        elif Q == "no":
+            print("Exiting the phone book. Goodbye!")
+            exit()
+        else:
+            print("Please enter 'yes' or 'no': ")
+def number(phone):
+    if (len(phone) == 12 and
+            phone[3] == '-' and
+            phone[7] == '-' and
+            phone.replace('-', '').isdigit()):
+        return True
+    return False
+
+if __name__ == '__main__':
+    phone_book = {
+        "Alice": ["123-456-7890"],
+        "Bob": ["987-654-3210"],
+        "Charlie": ["555-666-7777"]
+    }
+    while True:
+        menu()
+        choice = input("Please Select an Option 1-4: ")
+        if choice == "1":
+            name = input("Please enter the contact name you'd like to add: ").title()
+            while True:
+                phone = input("Please enter the number you'd like to add in the format xxx-xxx-xxxx: ")
+                if number(phone):
+                    break
+                else:
+                    print("Invalid format. Please use the exact format: XXX-XXX-XXXX")
+
+            for values in phone_book.values():
+                if phone in values:
+                    print("Phone number already taken by someone else!")
+                    break
+
+            else:
+                if name in phone_book:
+                    phone_book[name].append(phone)
+                    print(f"Added {phone} to {name}'s contact information")
+                else:
+                    phone_book[name] = [phone]
+                    print(f"Added new contact, {name}, with number: {phone}")
+            ask()
+        elif choice == "2":
+            print(f"Your Contacts: {phone_book}")
+            ask()
+        elif choice == "3":
+            name = input("Please enter the contact name you'd like to find: ").title()
+            if name in phone_book.keys():
+                print (f"Contact found: {phone_book[name]}")
+                ask()
+            else:
+                print("Contact Not Found!")
+                ask()
+        elif choice == "4":
+            name = input("Please enter the name you'd like to remove: ").title()
+            while True:
+                phone = input("Please enter their corresponding number you'd like to remove in the format xxx-xxx-xxxx: ")
+                if number(phone):
+                    break
+                else:
+                    print("Invalid format. Please use the exact format: XXX-XXX-XXXX")
+
+            for name, numbers_list in phone_book.items():
+                if phone in numbers_list:
+                    numbers_list.remove(phone)
+                    print(f"Phone number removed.")
+                    if len(numbers_list) == 0:
+                        del phone_book[name]
+                        print(f"{name} has no numbers left and was deleted.")
+                    break
+            else:
+                print("Phone number and/or contact not found!")
+            ask()
+        else:
+            print("Please enter a valid option (1-4)")
