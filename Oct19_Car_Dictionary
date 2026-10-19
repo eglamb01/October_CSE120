@@ -1,0 +1,18 @@
+def dictionary():
+    while True:
+        make = input("Please enter the make of a car (enter 'done' when finished with program): ")
+        if make == "done":
+            break
+        model = input("Please enter the model of a car: ").lower()
+        car_dict[model] = make
+def query():
+    query = input("Please enter a model to query: ").lower()
+
+    if query in car_dict:
+        print(f"The make of a(n) {query} is a(n) {car_dict[query]}")
+    else:
+        print(f"Model not found!")
+if __name__ == '__main__':
+    car_dict = {}
+    dictionary()
+    query()
