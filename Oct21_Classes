@@ -1,0 +1,19 @@
+if __name__ == '__main__':
+    class Triangle: #use self so python recognizes and applies the objects and values to the property itself
+            def __init__(self, width, height, ang1, ang2, ang3): #leave () blank if no assigned object
+                self.width = width #assign each object to itself
+                self.height = height
+                self.ang1 = ang1
+                self.ang2 = ang2
+                self.ang3 = ang3
+    t = Triangle(width = 5, height = 4, ang1 = 72, ang2 = 32, ang3 = 76) #assign starting values to them, can use single t = for all values because of the __init__
+    print(t.width) #recall specific property
+
+'''
+    class Greater:
+         def say_hello(self):
+              print("Hello!")
+
+    g = Greater() #creates class
+    g.say_hello() #makes action happen
+'''
